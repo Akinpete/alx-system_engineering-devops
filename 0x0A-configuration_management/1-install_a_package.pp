@@ -11,3 +11,11 @@ package { 'Flask':
   provider => 'pip3',
   require  => Package['python3-pip'],
 }
+
+# Define a package resource for a compatible version of Werkzeug
+package { 'Werkzeug':
+  ensure   => '2.0.3',  # This is an example version; adjust as needed for compatibility
+  provider => 'pip3',
+  require  => Package['python3-pip'],
+}
+
