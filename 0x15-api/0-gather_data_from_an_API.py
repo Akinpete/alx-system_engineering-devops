@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 '''
-collate employee's data from API
+gather employee data from API
 '''
 
+import re
 import requests
 import sys
 
@@ -10,7 +11,7 @@ REST_API = "https://jsonplaceholder.typicode.com"
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if isinstance(sys.argv[1], int):
+        if re.fullmatch(r'\d+', sys.argv[1]):
             id = int(sys.argv[1])
             req = requests.get('{}/users/{}'.format(REST_API, id)).json()
             task_req = requests.get('{}/todos'.format(REST_API)).json()
@@ -26,4 +27,4 @@ if __name__ == '__main__':
             )
             if len(completed_tasks) > 0:
                 for task in completed_tasks:
-                    print('\t {}\n'.format(task.get('title')))
+                    print('\t {}'.format(task.get('title')))
