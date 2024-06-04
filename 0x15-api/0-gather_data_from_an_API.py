@@ -2,7 +2,7 @@
 """For a given employee ID, returns information about
 their TODO list progress"""
 
-import requests # type: ignore
+import requests
 import sys
 
 if __name__ == "__main__":
